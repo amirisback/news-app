@@ -37,7 +37,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
     // library frogo-recycler-view
-    implementation 'com.github.amirisback:frogo-recycler-view:2.1.1'
+    implementation 'com.github.amirisback:frogo-recycler-view:2.1.2'
 
     // library consumable code news api
     implementation 'com.github.amirisback:consumable-code-news-api:1.0.1'
