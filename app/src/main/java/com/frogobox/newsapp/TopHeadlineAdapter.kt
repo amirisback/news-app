@@ -45,7 +45,7 @@ class TopHeadlineAdapter : FrogoRecyclerViewAdapter<Article>() {
 
             tvTitle.text = data.title
             tvDescription.text = data.description
-            Glide.with(itemView.context).load(data.urlToImage).into(ivUrl);
+            Glide.with(itemView.context).load(data.urlToImage).into(ivUrl)
 
         }
     }

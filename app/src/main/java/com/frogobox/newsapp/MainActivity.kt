@@ -1,5 +1,6 @@
 package com.frogobox.newsapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -19,6 +20,7 @@ import com.frogobox.frogonewsapi.util.NewsConstant.CATEGORY_TECHNOLOGY
 import com.frogobox.frogonewsapi.util.NewsConstant.COUNTRY_ID
 import com.frogobox.frogonewsapi.util.NewsUrl
 import com.frogobox.recycler.adapter.FrogoRecyclerViewListener
+import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         getTopHeadline(null)
         setupCategoryAdapter(listCategory())
+        title = "Top Headline"
     }
 
     private fun listCategory(): MutableList<String> {
@@ -60,6 +63,16 @@ class MainActivity : AppCompatActivity() {
         rv_category.isViewLinearHorizontal(false)
     }
 
+    private fun navDetailActivity(data: Article) {
+
+        startActivity(
+            Intent(this, DetailActivity::class.java).putExtra(
+                DetailActivity.EXTRA_DATA,
+                Gson().toJson(data)
+            )
+        )
+    }
+
     private fun setupTopHeadlineAdapter(data: List<Article>) {
         val adapter = TopHeadlineAdapter()
         adapter.setupRequirement(
@@ -67,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             data,
             object : FrogoRecyclerViewListener<Article> {
                 override fun onItemClicked(data: Article) {
-                    Toast.makeText(this@MainActivity, data.source?.name, Toast.LENGTH_SHORT).show()
+                    navDetailActivity(data)
                 }
 
                 override fun onItemLongClicked(data: Article) {

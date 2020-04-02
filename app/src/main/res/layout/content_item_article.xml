@@ -41,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/frogo_rv_dimen_8dp"
         android:text="@string/frogo_rv_is_empty_data"
+        android:textStyle="bold"
         android:textColor="@color/frogoRvcolorBaseBlack" />
 
     <TextView
