@@ -13,8 +13,8 @@ Beautiful ui no more fethcing data, focus on ui
 - consumable-code-news-api - https://github.com/amirisback/consumable-code-news-api
 
 # Screen Shoot Apps
-<span align="center"><img width="200px" height="360px" src="docs/ss_home.png"></span>
-<span align="center"><img width="200px" height="360px" src="docs/ss_api.png"></span>
+<span align="center"><img width="200px" height="360px" src="docs/image/ss_home.png"></span>
+<span align="center"><img width="200px" height="360px" src="docs/image/ss_api.png"></span>
 
 # Documentation News API
 https://newsapi.org/
