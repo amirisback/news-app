@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -40,7 +41,10 @@ dependencies {
     implementation 'com.github.amirisback:frogo-recycler-view:2.1.2'
 
     // library consumable code news api
-    implementation 'com.github.amirisback:consumable-code-news-api:1.0.1'
+    implementation 'com.github.amirisback:consumable-code-news-api:1.0.3'
+
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    kapt 'com.github.bumptech.glide:compiler:4.11.0'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

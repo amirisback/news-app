@@ -7,18 +7,26 @@
     tools:context=".MainActivity">
 
     <com.frogobox.recycler.FrogoRecyclerView
-        android:id="@+id/rv_news"
-        android:layout_width="wrap_content"
+        android:id="@+id/rv_category"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
-        android:paddingTop="@dimen/frogo_rv_dimen_8dp"
+        android:paddingLeft="@dimen/frogo_rv_dimen_16dp"
+        tools:listitem="@layout/content_item_article" />
+
+    <com.frogobox.recycler.FrogoRecyclerView
+        android:id="@+id/rv_news"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rv_category"
+        android:clipToPadding="false"
         tools:listitem="@layout/content_item_article" />
 
     <ProgressBar
         android:id="@+id/progress_view"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"/>
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
 
 </RelativeLayout>

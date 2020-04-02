@@ -2,6 +2,7 @@ package com.frogobox.newsapp
 
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.frogobox.frogonewsapi.data.model.Article
 import com.frogobox.recycler.adapter.FrogoRecyclerViewAdapter
 import com.frogobox.recycler.adapter.FrogoRecyclerViewHolder
@@ -37,15 +38,16 @@ class TopHeadlineAdapter : FrogoRecyclerViewAdapter<Article>() {
 
         private val tvTitle = view.tv_title
         private val tvDescription = view.tv_description
+        private val ivUrl = view.iv_url
 
         override fun initComponent(data: Article) {
             super.initComponent(data)
 
             tvTitle.text = data.title
             tvDescription.text = data.description
+            Glide.with(itemView.context).load(data.urlToImage).into(ivUrl);
 
         }
     }
-
 
 }
