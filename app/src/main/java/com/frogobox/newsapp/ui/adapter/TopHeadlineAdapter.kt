@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import com.frogobox.frogonewsapi.data.model.Article
 import com.frogobox.recycler.adapter.FrogoRecyclerViewAdapter
 import com.frogobox.recycler.adapter.FrogoRecyclerViewHolder
-import kotlinx.android.synthetic.main.content_item_article.view.*
+import kotlinx.android.synthetic.main.content_article_vertical.view.*
 
 /**
  * Created by Faisal Amir
@@ -38,12 +38,14 @@ class TopHeadlineAdapter : FrogoRecyclerViewAdapter<Article>() {
 
         private val tvTitle = view.tv_title
         private val tvDescription = view.tv_description
+        private val tvPublishdDate = view.tv_published
         private val ivUrl = view.iv_url
 
         override fun initComponent(data: Article) {
             super.initComponent(data)
 
             tvTitle.text = data.title
+            tvPublishdDate.text = data.publishedAt
             tvDescription.text = data.description
             Glide.with(itemView.context).load(data.urlToImage).into(ivUrl)
 

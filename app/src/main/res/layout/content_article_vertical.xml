@@ -39,10 +39,19 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/frogo_rv_dimen_8dp"
         android:text="@string/frogo_rv_is_empty_data"
+        android:textSize="16sp"
+        android:maxLines="1"
         android:textStyle="bold"
         android:textColor="@color/frogoRvcolorBaseBlack" />
+
+    <TextView
+        android:id="@+id/tv_published"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:layout_marginBottom="@dimen/frogo_rv_dimen_8dp"
+        android:text="@string/frogo_rv_is_empty_data" />
 
     <TextView
         android:id="@+id/tv_description"

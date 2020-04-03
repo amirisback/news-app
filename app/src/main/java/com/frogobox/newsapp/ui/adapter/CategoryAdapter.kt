@@ -4,7 +4,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.frogobox.recycler.adapter.FrogoRecyclerViewAdapter
 import com.frogobox.recycler.adapter.FrogoRecyclerViewHolder
-import kotlinx.android.synthetic.main.content_item_category.view.*
+import kotlinx.android.synthetic.main.content_category.view.*
 
 /**
  * Created by Faisal Amir

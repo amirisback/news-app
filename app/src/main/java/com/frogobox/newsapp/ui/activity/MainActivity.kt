@@ -1,14 +1,13 @@
 package com.frogobox.newsapp.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import com.frogobox.frogonewsapi.ConsumeNewsApi
 import com.frogobox.frogonewsapi.callback.NewsResultCallback
 import com.frogobox.frogonewsapi.data.model.Article
 import com.frogobox.frogonewsapi.data.response.ArticleResponse
+import com.frogobox.frogonewsapi.util.NewsConstant
 import com.frogobox.frogonewsapi.util.NewsConstant.CATEGORY_BUSINESS
 import com.frogobox.frogonewsapi.util.NewsConstant.CATEGORY_ENTERTAIMENT
 import com.frogobox.frogonewsapi.util.NewsConstant.CATEGORY_GENERAL
@@ -23,7 +22,6 @@ import com.frogobox.newsapp.base.BaseActivity
 import com.frogobox.newsapp.ui.adapter.CategoryAdapter
 import com.frogobox.newsapp.ui.adapter.TopHeadlineAdapter
 import com.frogobox.recycler.adapter.FrogoRecyclerViewListener
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -31,9 +29,12 @@ class MainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        getTopHeadline(null)
+        getTopHeadline(CATEGORY_ENTERTAIMENT) { setupHorizontalAdapter(it) }
+        getTopHeadline(null) { setupVerticalAdapter(it) }
         setupCategoryAdapter(listCategory())
+        supportActionBar?.elevation = 0f
         title = "Top Headline"
+
     }
 
     private fun listCategory(): MutableList<String> {
@@ -51,11 +52,12 @@ class MainActivity : BaseActivity() {
     private fun setupCategoryAdapter(data: List<String>) {
         val adapter = CategoryAdapter()
         adapter.setupRequirement(
-            R.layout.content_item_category,
+            R.layout.content_category,
             data,
             object : FrogoRecyclerViewListener<String> {
                 override fun onItemClicked(data: String) {
-                    getTopHeadline(data)
+                    getTopHeadline(data) { setupVerticalAdapter(it) }
+                    tv_top_headline.text = "category $data"
                 }
 
                 override fun onItemLongClicked(data: String) {}
@@ -66,14 +68,15 @@ class MainActivity : BaseActivity() {
         rv_category.isViewLinearHorizontal(false)
     }
 
-    private fun setupTopHeadlineAdapter(data: List<Article>) {
+    private fun setupHorizontalAdapter(data: List<Article>) {
         val adapter = TopHeadlineAdapter()
         adapter.setupRequirement(
-            R.layout.content_item_article,
+            R.layout.content_article_horizontal,
             data,
             object : FrogoRecyclerViewListener<Article> {
                 override fun onItemClicked(data: Article) {
                     baseStartActivity<DetailActivity, Article>(DetailActivity.EXTRA_DATA, data)
+                    setupShowAdsInterstitial()
                 }
 
                 override fun onItemLongClicked(data: Article) {
@@ -82,11 +85,32 @@ class MainActivity : BaseActivity() {
             }
         )
         adapter.setupEmptyView(null) // With Custom View
-        rv_news.adapter = adapter
-        rv_news.isViewLinearVertical(false)
+        rv_news_general.adapter = adapter
+        rv_news_general.isViewLinearHorizontal(false)
     }
 
-    private fun getTopHeadline(category: String?) {
+    private fun setupVerticalAdapter(data: List<Article>) {
+        val adapter = TopHeadlineAdapter()
+        adapter.setupRequirement(
+            R.layout.content_article_vertical,
+            data,
+            object : FrogoRecyclerViewListener<Article> {
+                override fun onItemClicked(data: Article) {
+                    baseStartActivity<DetailActivity, Article>(DetailActivity.EXTRA_DATA, data)
+                    setupShowAdsInterstitial()
+                }
+
+                override fun onItemLongClicked(data: Article) {
+                    data.description?.let { showToast(it) }
+                }
+            }
+        )
+        adapter.setupEmptyView(null) // With Custom View
+        rv_news_category.adapter = adapter
+        rv_news_category.isViewLinearVertical(false)
+    }
+
+    private fun getTopHeadline(category: String?, adapterSetup: (data: List<Article>) -> Unit) {
         val consumeNewsApi = ConsumeNewsApi(NewsUrl.NEWS_API_KEY)
         consumeNewsApi.usingChuckInterceptor(this)
         consumeNewsApi.getTopHeadline( // Adding Base Parameter on main function
@@ -99,7 +123,7 @@ class MainActivity : BaseActivity() {
             object : NewsResultCallback<ArticleResponse> {
                 override fun getResultData(data: ArticleResponse) {
                     // Your Ui or data
-                    data.articles?.let { setupTopHeadlineAdapter(it) }
+                    data.articles?.let { adapterSetup(it) }
                 }
 
                 override fun failedResult(statusCode: Int, errorMessage: String?) {
