@@ -1,11 +1,10 @@
-package com.frogobox.newsapp
+package com.frogobox.newsapp.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import com.frogobox.frogonewsapi.ConsumeNewsApi
 import com.frogobox.frogonewsapi.callback.NewsResultCallback
 import com.frogobox.frogonewsapi.data.model.Article
@@ -19,11 +18,15 @@ import com.frogobox.frogonewsapi.util.NewsConstant.CATEGORY_SPORTS
 import com.frogobox.frogonewsapi.util.NewsConstant.CATEGORY_TECHNOLOGY
 import com.frogobox.frogonewsapi.util.NewsConstant.COUNTRY_ID
 import com.frogobox.frogonewsapi.util.NewsUrl
+import com.frogobox.newsapp.R
+import com.frogobox.newsapp.base.BaseActivity
+import com.frogobox.newsapp.ui.adapter.CategoryAdapter
+import com.frogobox.newsapp.ui.adapter.TopHeadlineAdapter
 import com.frogobox.recycler.adapter.FrogoRecyclerViewListener
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,16 +66,6 @@ class MainActivity : AppCompatActivity() {
         rv_category.isViewLinearHorizontal(false)
     }
 
-    private fun navDetailActivity(data: Article) {
-
-        startActivity(
-            Intent(this, DetailActivity::class.java).putExtra(
-                DetailActivity.EXTRA_DATA,
-                Gson().toJson(data)
-            )
-        )
-    }
-
     private fun setupTopHeadlineAdapter(data: List<Article>) {
         val adapter = TopHeadlineAdapter()
         adapter.setupRequirement(
@@ -80,11 +73,11 @@ class MainActivity : AppCompatActivity() {
             data,
             object : FrogoRecyclerViewListener<Article> {
                 override fun onItemClicked(data: Article) {
-                    navDetailActivity(data)
+                    baseStartActivity<DetailActivity, Article>(DetailActivity.EXTRA_DATA, data)
                 }
 
                 override fun onItemLongClicked(data: Article) {
-                    Toast.makeText(this@MainActivity, data.description, Toast.LENGTH_SHORT).show()
+                    data.description?.let { showToast(it) }
                 }
             }
         )
@@ -111,7 +104,7 @@ class MainActivity : AppCompatActivity() {
 
                 override fun failedResult(statusCode: Int, errorMessage: String?) {
                     // Your failed to do
-                    Toast.makeText(this@MainActivity, errorMessage, Toast.LENGTH_SHORT).show()
+                    errorMessage?.let { showToast(it) }
                 }
 
                 override fun onShowProgress() {

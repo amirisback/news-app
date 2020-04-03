@@ -1,4 +1,4 @@
-package com.frogobox.newsapp
+package com.frogobox.newsapp.ui.adapter
 
 import android.view.View
 import android.view.ViewGroup

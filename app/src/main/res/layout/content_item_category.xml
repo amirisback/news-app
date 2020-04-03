@@ -32,6 +32,8 @@
 
     <TextView
         android:id="@+id/tv_category"
+        android:textAllCaps="true"
+        android:textColor="@color/frogoRvcolorBaseBlack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/frogo_rv_is_empty_data" />
