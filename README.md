@@ -1,51 +1,31 @@
-# NewsApp By AmirIsBack
-- v1.0.0 - Development
+## NewsApp By AmirIsBack
+- v2.0.0 - Development
 - Stable Version
 
-# About This Project
+## About This Project
 UI Apps, no need to worry about the data, because it's been handled with a library
 
-# Special From This Project
+## Special From This Project
 Beautiful ui no more fethcing data, focus on ui
 
-# Using Library
+## Using Library
 - frogo-recycler-view - https://github.com/amirisback/frogo-recycler-view    
 - consumable-code-news-api - https://github.com/amirisback/consumable-code-news-api
 
-# Screen Shoot Apps
+## Screen Shoot Apps
 <span align="center"><img width="200px" height="360px" src="docs/image/ss_app.png"></span>
 <span align="center"><img width="200px" height="360px" src="docs/image/ss_detail.png"></span>
 <span align="center"><img width="200px" height="360px" src="docs/image/ss_api.png"></span>
 
-# Documentation News API
+## Documentation News API
 https://newsapi.org/
 
-# Android Library Version (build.gradle)
-- ext.kotlin_version = '1.3.71'
-- classpath 'com.android.tools.build:gradle:3.6.1'
-- compileSdkVersion 29
-- buildToolsVersion "29.0.3"
-- minSdkVersion 21
-
-# Automatically Using This Permission
+## Automatically Using This Permission
     
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-
-# Version Release
-This Is Latest Release
-
-    $version_release = Development mode
-
-What's New??
-
-    * Development *
-
-
-# Screen Shot Apps
-
-# Colaborator
+    
+## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
 
 - Mail To faisalamircs@gmail.com
@@ -59,7 +39,7 @@ Name Of Contribute
 
 Waiting for your contribute
 
-# Attention !!!
+## Attention !!!
 Please enjoy and don't forget fork and give a star
 - Don't Forget Follow My Github Account
 - If you like this library, please help me / you can donate to buy patreon services
