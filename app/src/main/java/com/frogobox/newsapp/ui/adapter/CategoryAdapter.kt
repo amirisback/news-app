@@ -2,8 +2,8 @@ package com.frogobox.newsapp.ui.adapter
 
 import android.view.View
 import android.view.ViewGroup
-import com.frogobox.recycler.adapter.FrogoRecyclerViewAdapter
-import com.frogobox.recycler.adapter.FrogoRecyclerViewHolder
+import com.frogobox.recycler.core.FrogoRecyclerViewAdapter
+import com.frogobox.recycler.core.FrogoRecyclerViewHolder
 import kotlinx.android.synthetic.main.content_category.view.*
 
 /**
@@ -37,10 +37,7 @@ class CategoryAdapter : FrogoRecyclerViewAdapter<String>() {
         private val tvCategory = view.tv_category
 
         override fun initComponent(data: String) {
-            super.initComponent(data)
-
             tvCategory.text = data
-
         }
     }
 

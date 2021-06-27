@@ -7,7 +7,6 @@ import com.frogobox.frogonewsapi.ConsumeNewsApi
 import com.frogobox.frogonewsapi.callback.NewsResultCallback
 import com.frogobox.frogonewsapi.data.model.Article
 import com.frogobox.frogonewsapi.data.response.ArticleResponse
-import com.frogobox.frogonewsapi.util.NewsConstant
 import com.frogobox.frogonewsapi.util.NewsConstant.CATEGORY_BUSINESS
 import com.frogobox.frogonewsapi.util.NewsConstant.CATEGORY_ENTERTAIMENT
 import com.frogobox.frogonewsapi.util.NewsConstant.CATEGORY_GENERAL
@@ -21,7 +20,7 @@ import com.frogobox.newsapp.R
 import com.frogobox.newsapp.base.BaseActivity
 import com.frogobox.newsapp.ui.adapter.CategoryAdapter
 import com.frogobox.newsapp.ui.adapter.TopHeadlineAdapter
-import com.frogobox.recycler.adapter.FrogoRecyclerViewListener
+import com.frogobox.recycler.core.FrogoRecyclerViewListener
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {

@@ -4,8 +4,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.frogobox.frogonewsapi.data.model.Article
-import com.frogobox.recycler.adapter.FrogoRecyclerViewAdapter
-import com.frogobox.recycler.adapter.FrogoRecyclerViewHolder
+import com.frogobox.recycler.core.FrogoRecyclerViewAdapter
+import com.frogobox.recycler.core.FrogoRecyclerViewHolder
 import kotlinx.android.synthetic.main.content_article_vertical.view.*
 
 /**
@@ -42,8 +42,6 @@ class TopHeadlineAdapter : FrogoRecyclerViewAdapter<Article>() {
         private val ivUrl = view.iv_url
 
         override fun initComponent(data: Article) {
-            super.initComponent(data)
-
             tvTitle.text = data.title
             tvPublishdDate.text = data.publishedAt
             tvDescription.text = data.description
