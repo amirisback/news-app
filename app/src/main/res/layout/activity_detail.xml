@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/frogoRvColorBaseWhite"
+    android:background="@color/frogoColorWhite"
     android:orientation="vertical"
-    android:padding="@dimen/frogo_rv_dimen_16dp"
+    android:padding="@dimen/frogo_dimen_16dp"
     tools:context=".ui.activity.DetailActivity">
 
     <LinearLayout
@@ -16,8 +16,8 @@
         <ImageView
             android:id="@+id/iv_url"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/frogo_rv_dimen_130dp"
-            android:layout_marginBottom="@dimen/frogo_rv_dimen_8dp"
+            android:layout_height="@dimen/frogo_dimen_130dp"
+            android:layout_marginBottom="@dimen/frogo_dimen_8dp"
             android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars" />
 
@@ -25,22 +25,22 @@
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/frogo_rv_dimen_8dp"
-            android:textColor="@color/frogoRvcolorBaseBlack"
+            android:layout_marginBottom="@dimen/frogo_dimen_8dp"
+            android:textColor="@color/frogoColorBlack"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_source"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/frogo_rv_dimen_8dp"
+            android:layout_marginBottom="@dimen/frogo_dimen_8dp"
             android:gravity="end" />
 
         <TextView
             android:id="@+id/tv_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/frogo_rv_dimen_8dp" />
+            android:layout_marginBottom="@dimen/frogo_dimen_8dp" />
 
     </LinearLayout>
 
